@@ -25,4 +25,9 @@ class Course extends Model
     {
         return Course::create($data);
     }
+
+    public function modules()
+    {
+        return $this->hasMany(Modules::class);
+    }
 }

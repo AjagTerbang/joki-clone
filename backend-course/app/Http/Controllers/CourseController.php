@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Modules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -139,6 +140,8 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         if ($course) {
+            $course->modules;
+            
             return response()->json([
                 "data" => $course,
                 "status_code" => 200,
