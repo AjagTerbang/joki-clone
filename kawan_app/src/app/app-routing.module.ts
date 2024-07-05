@@ -91,6 +91,25 @@ const routes: Routes = [
         (m) => m.ModuleUpdatePageModule
       ),
   },
+  {
+    path: 'question/:idModule/:id',
+    loadChildren: () =>
+      import('./question/question.module').then((m) => m.QuestionPageModule),
+  },
+  {
+    path: 'question-update',
+    loadChildren: () =>
+      import('./question-update/question-update.module').then(
+        (m) => m.QuestionUpdatePageModule
+      ),
+  },
+  {
+    path: 'question-tambah/:id',
+    loadChildren: () =>
+      import('./question-tambah/question-tambah.module').then(
+        (m) => m.QuestionTambahPageModule
+      ),
+  },
 ];
 
 @NgModule({

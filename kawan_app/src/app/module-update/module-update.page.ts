@@ -109,5 +109,7 @@ export class ModuleUpdatePage implements OnInit {
     this.isi.content = responseData.data.content;
   }
 
-  batal() {}
+  batal() {
+    this.navCtrl.back();
+  }
 }

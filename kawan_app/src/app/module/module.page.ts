@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ModulePage implements OnInit {
   id: any;
+  idModule: any;
   role: string = '';
   modules: any = [];
   constructor(
@@ -28,6 +29,7 @@ export class ModulePage implements OnInit {
       }
       const id = paramMap.get('id');
       this.id = id;
+      this.idModule = id;
     });
     const token = localStorage.getItem('token');
 

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <h3 style="margin-right: 8px">Question</h3>
+        <ion-button (click)="back()"> Kembali </ion-button>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button *ngIf="role=='admin'" (click)="tambahQuestion(idModule)"
+    >Tambah Question</ion-button
+  >
+
+  <ion-list>
+    <!-- <ion-card *ngFor="let course of courses$ | async"> -->
+    <ion-card *ngFor="let question of questions">
+      <ion-card-content>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="3"> </ion-col>
+            <ion-col size="9"></ion-col>
+            <ion-card-content>
+              <ion-card-title>{{question.question}}</ion-card-title>
+              <ion-card>
+                <!-- create ion radio for answer  -->
+                <ion-radio-group>
+                  <ion-item *ngFor="let option of question.options">
+                    <ion-label>{{option.option}}</ion-label>
+                    <ion-radio slot="start" value="{{option.id}}"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-card>
+
+              <ion-button
+                *ngIf="role=='admin'"
+                color="primary"
+                (click)="editQuestion()"
+                >Update</ion-button
+              >
+              <ion-button
+                *ngIf="role=='admin'"
+                color="danger"
+                (click)="deleteQuestion(question.id)"
+                >Delete</ion-button
+              >
+            </ion-card-content>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
