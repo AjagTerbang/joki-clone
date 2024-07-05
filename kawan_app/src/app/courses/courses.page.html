@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <h3 style="margin-right: 8px">Courses</h3>
+        <ion-button (click)="logout()">
+          <ion-icon name="power-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button *ngIf="role=='admin'" (click)="tambahCourse()"
+    >Tambah Course</ion-button
+  >
+  <ion-button *ngIf="role=='admin'" (click)="createAdmin()"
+    >Tambah User Admin</ion-button
+  >
+
+  <ion-list>
+    <ion-card *ngFor="let course of courses$ | async">
+      <ion-card-content>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="3">
+              <ion-thumbnail>
+                <img [src]="course.imageUrl" />
+              </ion-thumbnail>
+            </ion-col>
+            <ion-col size="9"></ion-col>
+            <ion-card-content>
+              <ion-card-title>{{course.name}}</ion-card-title>
+
+              <ion-button
+                *ngIf="role=='admin'"
+                color="primary"
+                (click)="editCourse(course.id)"
+                >Update</ion-button
+              >
+              <ion-button
+                *ngIf="role=='admin'"
+                color="danger"
+                (click)="deleteCourse(course.id)"
+                >Delete</ion-button
+              >
+            </ion-card-content>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

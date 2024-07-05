@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>kawan learning</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  class="ion-padding"
+  style="background: linear-gradient(to bottom, #00aaff, #00ccff)"
+>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-md="6" size-lg="4">
+        <div class="login-container">
+          <h2 class="ion-text-center">
+            Log in with your kawan learning account!
+          </h2>
+          <ion-button expand="block" color="primary" class="facebook-button">
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+            Login with Facebook
+          </ion-button>
+          <div class="separator">
+            <span>OR</span>
+          </div>
+          <ion-item>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-input
+              placeholder="Username or email"
+              type="text"
+              [(ngModel)]="form.email"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input
+              placeholder="Password"
+              type="password"
+              [(ngModel)]="form.password"
+            ></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-checkbox slot="start"></ion-checkbox>
+            <ion-label>This is my computer/device</ion-label>
+          </ion-item>
+          <ion-button
+            expand="block"
+            color="primary"
+            style="margin-top: 20px"
+            (click)="login()"
+          >
+            Log in
+          </ion-button>
+          <ion-text class="ion-text-center">
+            <p>Forgot your password?</p>
+          </ion-text>
+          <ion-text class="ion-text-center">
+            <p>
+              New to kawan learning?
+              <a href="/register">Click here to create an account!</a>
+            </p>
+          </ion-text>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

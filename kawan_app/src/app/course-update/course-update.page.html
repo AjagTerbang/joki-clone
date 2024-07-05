@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Update Course</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="body">
+    <div class="form" *ngIf="isi">
+      <ion-textarea
+        [(ngModel)]="isi.name"
+        label="Nama Course"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Name"
+      ></ion-textarea>
+      <img alt="picture" id="image" src="{{ isi.imageUrl }}" />
+      <ion-input
+        type="file"
+        id="file-input"
+        accept="image/png, image/jpeg, image/jpg"
+        (change)="loadImage($event)"
+        class="file"
+        fill="outline"
+      ></ion-input>
+      <ion-input
+        [(ngModel)]="isi.description"
+        label="Description"
+        placeholder="{{isi.visi}}"
+        labelPlacement="floating"
+        fill="outline"
+      ></ion-input>
+
+      <ion-label>Start Date</ion-label>
+      <ion-datetime-button datetime="startDate"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime
+            id="startDate"
+            [(ngModel)]="isi.startDate"
+            presentation="date"
+            [formatOptions]="{
+        date: {
+          weekday: 'short',
+          month: 'long',
+          day: '2-digit',
+        },
+      }"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+
+      <ion-label>End Date</ion-label>
+      <ion-datetime-button datetime="endDate"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime
+            id="endDate"
+            [(ngModel)]="isi.endDate"
+            presentation="date"
+            [formatOptions]="{
+        date: {
+          weekday: 'short',
+          month: 'long',
+          day: '2-digit',
+        },
+      }"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+
+      <ion-button color="warning" class="edit" (click)="editCourse()">
+        <p>Ubah</p>
+      </ion-button>
+      <ion-button (click)="batal()">
+        <p>Batal</p>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,30 @@
+User (Pengguna)
+
+    UserID (Primary Key)
+    Username
+    Password
+    Email
+    Role (Admin atau Student)
+
+Course (Kursus)
+
+    CourseID (Primary Key)
+    Title
+    Description
+    StartDate
+    EndDate
+    CreatedBy (Foreign Key menghubungkan ke UserID)
+
+Enrollment (Pendaftaran)
+
+    EnrollmentID (Primary Key)
+    UserID (Foreign Key menghubungkan ke UserID)
+    CourseID (Foreign Key menghubungkan ke CourseID)
+    EnrollmentDate
+
+Module (Modul)
+
+    ModuleID (Primary Key)
+    CourseID (Foreign Key menghubungkan ke CourseID)
+    Title
+    Content

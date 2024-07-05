@@ -1,0 +1,7 @@
+{
+  "name": "kawan-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
