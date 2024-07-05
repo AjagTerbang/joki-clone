@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { TabsPage } from './component/tabs/tabs.page';
 const routes: Routes = [
   {
     path: 'home',
@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'tabs',
     pathMatch: 'full',
   },
   {
@@ -29,11 +29,7 @@ const routes: Routes = [
         (m) => m.SplashScreenPageModule
       ),
   },
-  {
-    path: 'courses',
-    loadChildren: () =>
-      import('./courses/courses.module').then((m) => m.CoursesPageModule),
-  },
+
   {
     path: 'course-update/:id',
     loadChildren: () =>
@@ -49,18 +45,45 @@ const routes: Routes = [
       ),
   },
   {
+    path: '',
+    component: TabsPage,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'courses',
+      },
+      {
+        path: 'courses',
+        loadChildren: () =>
+          import('./courses/courses.module').then((m) => m.CoursesPageModule),
+      },
+    ],
+  },
+  {
+    path: 'create-admin',
+    loadChildren: () =>
+      import('./create-admin/create-admin.module').then(
+        (m) => m.CreateAdminPageModule
+      ),
+  },
+  {
+    path: 'module/:id',
+    loadChildren: () =>
+      import('./module/module.module').then((m) => m.ModulePageModule),
+  },
+  {
     path: 'tabs',
     loadChildren: () =>
       import('./component/tabs/tabs.module').then((m) => m.TabsPageModule),
-  },  {
-    path: 'create-admin',
-    loadChildren: () => import('./create-admin/create-admin.module').then( m => m.CreateAdminPageModule)
   },
   {
-    path: 'module',
-    loadChildren: () => import('./module/module.module').then( m => m.ModulePageModule)
+    path: 'module-tambah/:id',
+    loadChildren: () =>
+      import('./module-tambah/module-tambah.module').then(
+        (m) => m.ModuleTambahPageModule
+      ),
   },
-
 ];
 
 @NgModule({
