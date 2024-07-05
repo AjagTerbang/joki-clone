@@ -27,7 +27,10 @@
   >
 
   <ion-list>
-    <ion-card *ngFor="let course of courses$ | async">
+    <ion-card
+      *ngFor="let course of courses$ | async"
+      (click)="onCardClick(course.id)"
+    >
       <ion-card-content>
         <ion-grid fixed>
           <ion-row>

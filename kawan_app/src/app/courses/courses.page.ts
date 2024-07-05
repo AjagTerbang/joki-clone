@@ -34,6 +34,11 @@ export class CoursesPage implements OnInit {
     this.courses$ = new Observable<Course[]>();
   }
 
+  onCardClick(id: number) {
+    console.log(id);
+    window.location.href = `module/${id}`;
+  }
+
   async ngOnInit() {
     // get token from local storage
     const token = localStorage.getItem('token');

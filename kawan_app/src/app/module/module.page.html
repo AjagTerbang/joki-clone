@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-button *ngIf="role=='admin'" (click)="tambahModule(1)"
+  <ion-button *ngIf="role=='admin'" (click)="tambahModule(id)"
     >Tambah Module</ion-button
   >
 
@@ -36,13 +36,13 @@
               <ion-button
                 *ngIf="role=='admin'"
                 color="primary"
-                (click)="editModule()"
+                (click)="editModule(module.id)"
                 >Update</ion-button
               >
               <ion-button
                 *ngIf="role=='admin'"
                 color="danger"
-                (click)="deleteModule()"
+                (click)="deleteModule(module.id)"
                 >Delete</ion-button
               >
             </ion-card-content>

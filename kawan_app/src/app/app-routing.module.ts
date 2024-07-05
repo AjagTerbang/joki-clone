@@ -84,6 +84,13 @@ const routes: Routes = [
         (m) => m.ModuleTambahPageModule
       ),
   },
+  {
+    path: 'module-update/:id',
+    loadChildren: () =>
+      import('./module-update/module-update.module').then(
+        (m) => m.ModuleUpdatePageModule
+      ),
+  },
 ];
 
 @NgModule({

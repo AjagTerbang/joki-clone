@@ -71,11 +71,67 @@ export class ModulePage implements OnInit {
     loading.dismiss();
   }
 
-  deleteModule() {}
+  deleteModule(id: number) {
+    this.alertController
+      .create({
+        header: 'Delete',
+        message: 'Are you sure want to delete this module?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          },
+          {
+            text: 'Delete',
+            handler: async () => {
+              const response = await fetch(
+                `${environment.nopalEndPoint}/api/modules/${id}`,
+                {
+                  method: 'DELETE',
+                  headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                  },
+                }
+              );
+              const responseData = await response.json();
+              if (responseData.status_code == 200) {
+                this.alertController
+                  .create({
+                    header: 'Success',
+                    message: 'Module berhasil dihapus',
+                    buttons: ['OK'],
+                  })
+                  .then((alertEl) => {
+                    alertEl.present();
+                    alertEl.onDidDismiss().then(() => {
+                      window.location.reload();
+                    });
+                  });
+              } else {
+                this.alertController
+                  .create({
+                    header: 'Error',
+                    message: responseData.message,
+                    buttons: ['OK'],
+                  })
+                  .then((alertEl) => {
+                    alertEl.present();
+                  });
+              }
+            },
+          },
+        ],
+      })
+      .then((alertEl) => {
+        alertEl.present();
+      });
+  }
   tambahModule(id: number) {
     window.location.href = `/module-tambah/${id}`;
   }
-  editModule() {}
+  editModule(id: number) {
+    window.location.href = `/module-update/${id}`;
+  }
   back() {
     window.location.href = '/courses';
   }
