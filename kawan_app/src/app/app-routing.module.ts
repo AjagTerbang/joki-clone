@@ -91,11 +91,11 @@ const routes: Routes = [
         (m) => m.ModuleUpdatePageModule
       ),
   },
-  {
-    path: 'question/:idModule/:id',
-    loadChildren: () =>
-      import('./question/question.module').then((m) => m.QuestionPageModule),
-  },
+  // {
+  //   path: 'question/:idModule/:id',
+  //   loadChildren: () =>
+  //     import('./question/question.module').then((m) => m.QuestionPageModule),
+  // },
   {
     path: 'question-update',
     loadChildren: () =>
