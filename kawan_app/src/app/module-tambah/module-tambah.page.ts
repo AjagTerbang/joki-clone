@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { environmentProd } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-module-tambah',
@@ -43,7 +44,7 @@ export class ModuleTambahPage implements OnInit {
         });
     }
     const response = await fetch(
-      `${environment.nopalEndPoint}/api/courses/${this.id}/modules`,
+      `${environmentProd.apiUrl}/api/courses/${this.id}/modules`,
       {
         method: 'POST',
         headers: {

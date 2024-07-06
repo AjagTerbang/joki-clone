@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-tambah-courses',
   templateUrl: './tambah-courses.page.html',
@@ -44,7 +45,7 @@ export class TambahCoursesPage implements OnInit {
     form.append('imageUrl', this.img);
     form.append('startDate', this.isi.startDate);
     form.append('endDate', this.isi.endDate);
-    const response = await fetch('http://127.0.0.1:8000/api/courses', {
+    const response = await fetch(`${environmentProd.apiUrl}/api/courses`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { NavController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-module-update',
@@ -48,7 +49,7 @@ export class ModuleUpdatePage implements OnInit {
     }
 
     const response = await fetch(
-      `${environment.nopalEndPoint}/api/modules/${this.id}`,
+      `${environmentProd.apiUrl}/api/modules/${this.id}`,
       {
         method: 'PUT',
         headers: {
@@ -92,7 +93,7 @@ export class ModuleUpdatePage implements OnInit {
 
   async getData() {
     const response = await fetch(
-      `${environment.nopalEndPoint}/api/modules/${this.id}`,
+      `${environmentProd.apiUrl}/api/modules/${this.id}`,
       {
         method: 'GET',
         headers: {

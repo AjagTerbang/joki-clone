@@ -3,6 +3,7 @@ import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { environmentProd } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-module',
   templateUrl: './module.page.html',
@@ -64,7 +65,7 @@ export class ModulePage implements OnInit {
     loading.present();
     //get data from api
     const response = await fetch(
-      `${environment.nopalEndPoint}/api/courses/${this.id}/modules`
+      `${environmentProd.apiUrl}/api/courses/${this.id}/modules`
     );
     const data = await response.json();
     console.log(data.data);
@@ -87,7 +88,7 @@ export class ModulePage implements OnInit {
             text: 'Delete',
             handler: async () => {
               const response = await fetch(
-                `${environment.nopalEndPoint}/api/modules/${id}`,
+                `${environmentProd.apiUrl}/api/modules/${id}`,
                 {
                   method: 'DELETE',
                   headers: {

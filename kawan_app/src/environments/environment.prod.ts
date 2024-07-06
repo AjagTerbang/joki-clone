@@ -1,3 +1,4 @@
-export const environment = {
-  production: true
+export const environmentProd = {
+  production: true,
+  apiUrl: 'https://kawan-kita.quizlogy.xyz',
 };

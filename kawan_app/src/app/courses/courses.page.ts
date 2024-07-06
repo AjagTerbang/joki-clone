@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import { Course } from './course.model';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-courses',
@@ -99,7 +100,7 @@ export class CoursesPage implements OnInit {
               console.log('deleted');
               //fetch
               const deleteResult = await fetch(
-                `http://127.0.0.1:8000/api/courses/${id}`,
+                `${environmentProd.apiUrl}/api/courses/${id}`,
                 {
                   method: 'DELETE',
                   headers: {

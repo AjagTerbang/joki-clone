@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-create-admin',
   templateUrl: './create-admin.page.html',
@@ -17,14 +18,17 @@ export class CreateAdminPage implements OnInit {
 
   async register() {
     console.log(this.form);
-    const response = await fetch('http://127.0.0.1:8000/api/register-admin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-      body: JSON.stringify(this.form),
-    });
+    const response = await fetch(
+      `${environmentProd.apiUrl}/api/register-admin`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(this.form),
+      }
+    );
 
     const data = await response.json();
     console.log(data);

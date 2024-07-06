@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-course-update',
   templateUrl: './course-update.page.html',
@@ -29,11 +30,14 @@ export class CourseUpdatePage implements OnInit {
   }
 
   async getData(id: any) {
-    const response = await fetch(`http://127.0.0.1:8000/api/findcourse/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    const response = await fetch(
+      `${environmentProd.apiUrl}/api/findcourse/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    );
 
     const data = await response.json();
     console.log(data);
@@ -78,7 +82,7 @@ export class CourseUpdatePage implements OnInit {
     //fetch into
     //127.0.0.1:8000/api/updatecourse/:id
     const response = await fetch(
-      `http://127.0.0.1:8000/api/updatecourse/${this.id}`,
+      `${environmentProd.apiUrl}/api/updatecourse/${this.id}`,
       {
         method: 'POST',
         headers: {

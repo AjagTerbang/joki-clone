@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -28,7 +30,7 @@ export class LoginPage implements OnInit {
         })
         .then((alert) => alert.present());
     }
-    const response = await fetch('http://127.0.0.1:8000/api/login', {
+    const response = await fetch(`${environmentProd.apiUrl}/api/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

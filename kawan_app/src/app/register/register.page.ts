@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
+import { environmentProd } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -19,7 +20,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {}
 
   async register() {
-    const response = await fetch('http://127.0.0.1:8000/api/register', {
+    const response = await fetch(`${environmentProd.apiUrl}/api/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
