@@ -38,20 +38,25 @@ export class RegisterPage implements OnInit {
         })
         .then((alert) => alert.present());
     }
-    if (data.statusCode == 200) {
-      let toast = await this.toastController.create({
-        message: 'Hello World!',
-        duration: 1500,
-        position: 'bottom',
-      });
-
-      await toast.present();
-
-      this.form = {
-        name: '',
-        email: '',
-        password: '',
-      };
+    if (data.status_code == 200) {
+      this.alertController
+        .create({
+          header: 'Success',
+          message: 'User registered successfully',
+          buttons: ['OK'],
+        })
+        .then((alert) => {
+          alert.present();
+          alert.onDidDismiss().then(() => {
+            window.location.href = '/login';
+          });
+        });
     }
+
+    this.form = {
+      name: '',
+      email: '',
+      password: '',
+    };
   }
 }
