@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { environmentProd } from 'src/environments/environment.prod';
 @Component({

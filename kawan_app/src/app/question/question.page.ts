@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { environment } from 'src/environments/environment';
+import { environmentProd } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-question',
@@ -52,7 +52,7 @@ export class QuestionPage implements OnInit {
   async getQuestion() {
     const token = localStorage.getItem('token');
     const response = await fetch(
-      `${environment.nopalEndPoint}/api/modules/${this.id}/questions`,
+      `${environmentProd.apiUrl}/api/modules/${this.id}/questions`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ export class QuestionPage implements OnInit {
 
   deleteQuestion(id: any) {
     const token = localStorage.getItem('token');
-    fetch(`${environment.nopalEndPoint}/api/questions/${id}`, {
+    fetch(`${environmentProd.apiUrl}/api/questions/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
